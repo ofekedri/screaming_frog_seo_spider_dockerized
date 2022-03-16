@@ -1,4 +1,5 @@
 FROM ubuntu:20.04
+
 ARG DEBIAN_FRONTEND=noninteractive
 
 #screamingfrogseospider dependencies (excluding wget and xvfb)
@@ -14,14 +15,21 @@ rm screamingfrogseospider_16.7_all.deb
 
 
 
-RUN mkdir /root/.ScreamingFrogSEOSpider
-RUN touch /root/.ScreamingFrogSEOSpider/spider.config
+#Env
+#Display can be env
+ENV DISPLAY=:99
 
-RUN echo 'eula.accepted=11' >> /root/.ScreamingFrogSEOSpider/spider.config
-
-ENV DISPLAY :99
 
 COPY start_screamingfrog.sh /root/start_screamingfrog.sh
-RUN chmod a+x /root/start_screamingfrog.sh
+RUN chmod a+x /root/start_screamingfrog.sh 
+
+
+RUN mkdir /root/.ScreamingFrogSEOSpider && \
+touch /root/.ScreamingFrogSEOSpider/spider.config && \
+echo 'eula.accepted=11' >> /root/.ScreamingFrogSEOSpider/spider.config
+
+RUN mkdir /root/output
+
+
 
 ENTRYPOINT ["/root/start_screamingfrog.sh"]
