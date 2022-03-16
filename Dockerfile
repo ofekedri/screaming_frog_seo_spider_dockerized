@@ -1,4 +1,5 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
+ARG DEBIAN_FRONTEND=noninteractive
 
 RUN echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
 RUN apt update && apt install wget ttf-mscorefonts-installer xdg-utils zenity fonts-wqy-zenhei libgconf-2-4 libgtk2.0-0 libnss3 libxss1 libasound2 xvfb -y
