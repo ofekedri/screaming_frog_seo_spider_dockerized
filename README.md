@@ -14,6 +14,9 @@ Need to create folder for mount
 mkdir container
 ```
 
+
+Example:
+
 ```sh
 docker run --rm \
 -v ${PWD}/container:/root/output \
