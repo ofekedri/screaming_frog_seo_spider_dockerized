@@ -21,8 +21,6 @@ RUN echo 'eula.accepted=11' >> /root/.ScreamingFrogSEOSpider/spider.config
 
 ENV DISPLAY :99
 
-COPY licence.txt /root/.ScreamingFrogSEOSpider/licence.txt
-
 COPY start_screamingfrog.sh /root/start_screamingfrog.sh
 RUN chmod a+x /root/start_screamingfrog.sh
 
