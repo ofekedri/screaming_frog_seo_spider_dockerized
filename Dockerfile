@@ -17,7 +17,7 @@ rm screamingfrogseospider_16.7_all.deb
 RUN mkdir /root/.ScreamingFrogSEOSpider
 RUN touch /root/.ScreamingFrogSEOSpider/spider.config
 
-RUN echo 'eula.accepted=9' >> /root/.ScreamingFrogSEOSpider/spider.config
+RUN echo 'eula.accepted=11' >> /root/.ScreamingFrogSEOSpider/spider.config
 
 ENV DISPLAY :99
 
