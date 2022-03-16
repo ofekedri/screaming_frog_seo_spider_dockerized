@@ -15,13 +15,28 @@ mkdir container
 ```
 
 
-Example:
+Example (image from dockerhub)
 
 ```sh
 docker run --rm \
 -v ${PWD}/container:/root/output \
 -v ${PWD}/licence.txt:/root/.ScreamingFrogSEOSpider/licence.txt \
-screamingfrog:ubuntu2004 \
+ofekedri/seospider:16.7 \
+--crawl https://google.com \
+--headless \
+--output-folder /root/output \
+--save-crawl --timestamped-output --export-format csv \
+--overwrite \
+--export-tabs "Internal:All,Response Codes:Client Error (4xx)"
+```
+
+Example (for local build)
+
+```sh
+docker run --rm \
+-v ${PWD}/container:/root/output \
+-v ${PWD}/licence.txt:/root/.ScreamingFrogSEOSpider/licence.txt \
+screamingfrog \
 --crawl https://google.com \
 --headless \
 --output-folder /root/output \
