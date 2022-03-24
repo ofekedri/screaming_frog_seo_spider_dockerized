@@ -30,6 +30,7 @@ echo 'eula.accepted=11' >> /root/.ScreamingFrogSEOSpider/spider.config
 
 RUN mkdir /root/output
 
+COPY docker-entrypoint.sh /root/docker-entrypoint.sh
 
+ENTRYPOINT ["/root/docker-entrypoint.sh", "/root/start_screamingfrog.sh"]
 
-ENTRYPOINT ["/root/start_screamingfrog.sh"]
