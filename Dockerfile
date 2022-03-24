@@ -13,10 +13,7 @@ RUN wget https://download.screamingfrog.co.uk/products/seo-spider/screamingfrogs
 dpkg -i screamingfrogseospider_16.7_all.deb && \
 rm screamingfrogseospider_16.7_all.deb
 
-
-
 #Env
-#Display can be env
 ENV DISPLAY=:99
 
 
@@ -26,7 +23,7 @@ RUN chmod a+x /root/start_screamingfrog.sh
 
 RUN mkdir /root/.ScreamingFrogSEOSpider && \
 touch /root/.ScreamingFrogSEOSpider/spider.config && \
-echo 'eula.accepted=11' >> /root/.ScreamingFrogSEOSpider/spider.config
+echo 'eula.accepted=9' >> /root/.ScreamingFrogSEOSpider/spider.config
 
 RUN mkdir /root/output
 
