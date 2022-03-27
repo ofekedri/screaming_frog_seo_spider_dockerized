@@ -23,11 +23,13 @@ RUN chmod a+x /root/start_screamingfrog.sh
 
 RUN mkdir /root/.ScreamingFrogSEOSpider && \
 touch /root/.ScreamingFrogSEOSpider/spider.config && \
-echo 'eula.accepted=9' >> /root/.ScreamingFrogSEOSpider/spider.config
+echo 'eula.accepted=11' >> /root/.ScreamingFrogSEOSpider/spider.config
 
-RUN mkdir /root/output
+RUN mkdir /root/seo_spider_configuration && \
+mkdir /root/seo_spider_configuration/volume && \
+mkdir /root/seo_spider_configuration/configuration
 
-COPY docker-entrypoint.sh /root/docker-entrypoint.sh
+COPY option* /root/seo_spider_configuration/configuration/
 
-ENTRYPOINT ["/root/docker-entrypoint.sh", "/root/start_screamingfrog.sh"]
+ENTRYPOINT [ "/root/start_screamingfrog.sh"]
 
