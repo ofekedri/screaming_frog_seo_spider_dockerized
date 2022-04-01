@@ -13,12 +13,12 @@ RUN wget https://download.screamingfrog.co.uk/products/seo-spider/screamingfrogs
 dpkg -i screamingfrogseospider_16.7_all.deb && \
 rm screamingfrogseospider_16.7_all.deb
 
-#Env
-ENV DISPLAY=:99
+RUN apt-get update && apt install systemd -y
 
+COPY xvfb.service /etc/systemd/system/xvfb.service 
+RUN systemctl enable /etc/systemd/system/xvfb.service
+RUN echo "export DISPLAY=:0" >> ~/.bashrc
 
-COPY start_screamingfrog.sh /root/start_screamingfrog.sh
-RUN chmod a+x /root/start_screamingfrog.sh 
 
 
 RUN mkdir /root/.ScreamingFrogSEOSpider && \
@@ -29,7 +29,6 @@ RUN mkdir /root/seo_spider_configuration && \
 mkdir /root/seo_spider_configuration/volume && \
 mkdir /root/seo_spider_configuration/configuration
 
-COPY option* /root/seo_spider_configuration/configuration/
 
-ENTRYPOINT [ "/root/start_screamingfrog.sh"]
+ENTRYPOINT [ "/usr/bin/screamingfrogseospider"]
 
